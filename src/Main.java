@@ -65,16 +65,38 @@ public class Main {
     }
 
     private static boolean isPrimeNumber(int n) {
-        boolean isPrime = false;
+        boolean isPrime = true;
         if(n != 1) {
             for(int i = 1; i <= Math.sqrt(n); i++) {
-                if(n % i != 0) {
-                    isPrime = true;
+                if (n % i == 0) {
+                    isPrime = false;
+                    break;
                 }
             }
         }
         return isPrime;
     }
+
+    private static ArrayList<Integer> getPrimeDividers(int n) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 1; i <= n; i++) {
+            if(n % i == 0 && isPrimeNumber(i)) {
+                arr.add(i);
+            }
+        }
+        return arr;
+    }
+
+    private static int howManyTimesWasNumberDivided = 0;
+    private static int rozklad(int n) {
+        if(!isPrimeNumber(n)) {
+            int temp = n / getPrimeDividers(n).get(0);
+            howManyTimesWasNumberDivided++;
+            rozklad(temp);
+        }
+        return howManyTimesWasNumberDivided;
+    }
+
     private static void zad4Part2() throws IOException {
         File wyniki4 = new File("wyniki4_2.txt");
         File liczby = new File("przyklad.txt");
@@ -82,15 +104,20 @@ public class Main {
             wyniki4.createNewFile();
         ArrayList<String> content = (ArrayList<String>) Files.readAllLines(liczby.toPath());
         ArrayList<Integer> contentOfLiczbyFile = new ArrayList<>();
+        ArrayList<Integer> howManyDividersForEachNum = new ArrayList<>();
         for(String s : content)
             contentOfLiczbyFile.add(Integer.parseInt(s));
         //algorithm here
         for(Integer i : contentOfLiczbyFile) {
-            int temp = i;
-            do {
-                temp //really, really hard
-            } while(isPrimeNumber())
+            if(isPrimeNumber(i)) {
+                howManyDividersForEachNum.add(1);
+            }
+            else {
+                howManyDividersForEachNum.add(rozklad(i));
+            }
         }
+        for(int i : howManyDividersForEachNum)
+            System.out.println(i);
     }
     public static void main(String[] args) throws IOException {
         zad4Part2();
