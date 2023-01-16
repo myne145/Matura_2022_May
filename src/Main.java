@@ -80,20 +80,28 @@ public class Main {
     private static ArrayList<Integer> getPrimeDividers(int n) {
         ArrayList<Integer> arr = new ArrayList<>();
         for(int i = 1; i <= n; i++) {
-            if(n % i == 0 && isPrimeNumber(i)) {
+            if(n % i == 0) {
                 arr.add(i);
             }
         }
-        return arr;
+        ArrayList<Integer> result = new ArrayList<>();
+        for(int i : arr)
+            if(isPrimeNumber(i))
+                result.add(i);
+        return result;
     }
 
     private static int howManyTimesWasNumberDivided = 0;
     private static int rozklad(int n) {
-        if(!isPrimeNumber(n)) {
-            int temp = n / getPrimeDividers(n).get(0);
+        while(!isPrimeNumber(n)) {
+            n = n / getPrimeDividers(n).get(0);
             howManyTimesWasNumberDivided++;
-            rozklad(temp);
         }
+//        if(!isPrimeNumber(n)) {
+//            int temp = n / getPrimeDividers(n).get(0);
+//            howManyTimesWasNumberDivided++;
+//            rozklad(temp);
+//        }
         return howManyTimesWasNumberDivided;
     }
 
