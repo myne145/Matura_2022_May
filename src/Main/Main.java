@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 import static Main.Algorithms.*;
 
@@ -145,8 +143,23 @@ public class Main {
             results.put(s.split("\t")[2], results.get(s.split("\t")[2]) + 1);
         System.out.println(results);
     }
+
+    private static void zad5Part2() throws IOException {
+        ArrayList<String> arr = readFileArrString(new File("soki.txt"));
+        ArrayList<String> content = new ArrayList<>();
+        LinkedHashMap<Date, ArrayList<String>> results = new LinkedHashMap<>();
+        for(int i = 1; i < arr.size(); i++)
+            content.add(arr.get(i));
+        for(String s : content) {
+            String[] lineSplitted = s.split("\t");
+            Date date = new Date(Integer.parseInt(lineSplitted[1].split("\\.")[2]) - 1900, Integer.parseInt(lineSplitted[1].split("\\.")[1]) - 1, Integer.parseInt(lineSplitted[1].split("\\.")[0]));
+            ArrayList<String> data = new ArrayList<>();
+
+
+        }
+    }
     
     public static void main(String[] args) throws IOException {
-        zad5Part1();
+        zad5Part2();
     }
 }
