@@ -1,0 +1,2 @@
+Pierwsza taka liczba: 93639
+Ilość takich liczb: 18
