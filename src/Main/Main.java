@@ -1,9 +1,14 @@
+package Main;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+
+import static Main.Algorithms.*;
 
 public class Main {
 
@@ -128,11 +133,20 @@ public class Main {
             System.out.println(i);
     }
 
-    private static void zad5() {
-
+    private static void zad5Part1() throws IOException {
+        ArrayList<String> arr = readFileArrString(new File("soki.txt"));
+        ArrayList<String> content = new ArrayList<>();
+        LinkedHashMap<String, Integer> results = new LinkedHashMap<>();
+        for(int i = 1; i < arr.size(); i++)
+            content.add(arr.get(i));
+        for(String s : content)
+            results.put(s.split("\t")[2], 0);
+        for(String s : content)
+            results.put(s.split("\t")[2], results.get(s.split("\t")[2]) + 1);
+        System.out.println(results);
     }
     
     public static void main(String[] args) throws IOException {
-        zad4Part2();
+        zad5Part1();
     }
 }
