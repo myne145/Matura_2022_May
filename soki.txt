@@ -1,5 +1,5 @@
 nr_zamowienia	data	magazyn	wielkosc_zamowienia
-1	02.01.2021	Ogrodzieniec	1290
+1	02.01.2021  Ogrodzieniec	1290
 2	02.01.2021	Przemysl	4420
 3	02.01.2021	Gniezno	5190
 4	03.01.2021	Malbork	950

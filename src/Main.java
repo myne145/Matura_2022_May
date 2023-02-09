@@ -127,6 +127,11 @@ public class Main {
         for(int i : howManyDividersForEachNum)
             System.out.println(i);
     }
+
+    private static void zad5() {
+
+    }
+    
     public static void main(String[] args) throws IOException {
         zad4Part2();
     }
